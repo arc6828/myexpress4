@@ -1,0 +1,27 @@
+name: Deploy to Express Server
+
+on:
+  push:
+    branches:
+      - main  # หรือ branch ที่ต้องการ
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Deploy via SSH
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          cd /var/www/chavalit.csbootstrap.com/myexpress4
+          git pull origin main
+          npm install
+          pm2 restart all
+# end
