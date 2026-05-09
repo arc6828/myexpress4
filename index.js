@@ -19,7 +19,7 @@ const app = express();
 
 // GET Method test
 app.get('/', (req, res) => {
-  res.send('hello world, Chavalit');
+  res.send('hello world, Chavalit Koweerawong');
 });
 
 
