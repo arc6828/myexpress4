@@ -17,6 +17,12 @@ const client = line.LineBotClient.fromChannelAccessToken({
 // about Express itself: https://expressjs.com/
 const app = express();
 
+// GET Method test
+app.get('/', (req, res) => {
+  res.send('hello world, Chavalit');
+});
+
+
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
 app.post('/callback', line.middleware(config), (req, res) => {
@@ -47,7 +53,7 @@ function handleEvent(event) {
 }
 
 // listen on port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3099;
 app.listen(port, () => {
   console.log(`listening on ${port}`);
 });
